@@ -1,0 +1,21 @@
+[package]
+name = "bevy_worldgen_render"
+description = "Layer C: terrain/water/vegetation/building rendering for bevy_worldgen chunks (public Bevy APIs only)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+bevy.workspace = true
+bevy_worldgen = { path = "../bevy_worldgen" }
+worldgen-core = { path = "../worldgen-core" }
+worldgen-terrain = { path = "../worldgen-terrain" }
+worldgen-world = { path = "../worldgen-world" }
+worldgen-veg = { path = "../worldgen-veg" }
+bevy_grass.workspace = true
+worldgen-roads = { path = "../worldgen-roads" }
+worldgen-city = { path = "../worldgen-city" }

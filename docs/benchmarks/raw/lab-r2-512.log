@@ -1,0 +1,6 @@
+BENCH generation_latency_ms=302.8
+BENCH frames=44 mean_ms=45.61 p50=3.06 p99=1535.41 max=1535.41 entities=979 rss_mb=677 hwm_mb=677 gpu_ms[ main_opaque_pass_3d=2.25 main_transparent_pass_3d=0.53 ]
+BENCH frames=176 mean_ms=11.42 p50=10.32 p99=84.74 max=228.11 entities=2831 rss_mb=818 hwm_mb=818 gpu_ms[ main_opaque_pass_3d=8.70 main_transparent_pass_3d=0.40 ]
+BENCH frames=186 mean_ms=10.79 p50=10.52 p99=13.36 max=13.39 entities=2831 rss_mb=818 hwm_mb=818 gpu_ms[ main_opaque_pass_3d=8.71 main_transparent_pass_3d=0.40 ]
+BENCH frames=186 mean_ms=10.80 p50=10.51 p99=13.37 max=13.94 entities=2831 rss_mb=818 hwm_mb=818 gpu_ms[ main_opaque_pass_3d=8.83 main_transparent_pass_3d=0.41 ]
+BENCH frames=186 mean_ms=10.81 p50=10.52 p99=13.26 max=13.73 entities=2831 rss_mb=818 hwm_mb=818 gpu_ms[ main_opaque_pass_3d=8.73 main_transparent_pass_3d=0.40 ]

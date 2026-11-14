@@ -1,0 +1,63 @@
+//! PHASE-1 BENCH PATCH (scratch copy only; not part of the user's branch).
+//! Logs: per-second frame-time stats (mean/p99/max), entity count, VmHWM RSS, and the latency
+//! from `DirtyFlags.terrain` being set until the generated heightmap is published.
+use bevy::diagnostic::{DiagnosticsStore, EntityCountDiagnosticsPlugin, FrameTimeDiagnosticsPlugin};
+use bevy::prelude::*;
+use std::time::Instant;
+use crate::core::config::{CurrentHeightMap, DirtyFlags, GenerationTask};
+
+#[derive(Resource, Default)]
+pub struct BenchState {
+    gen_start: Option<Instant>,
+    frame_ms: Vec<f32>,
+    last_report: Option<Instant>,
+}
+
+fn rss(key: &str) -> f64 {
+    std::fs::read_to_string("/proc/self/status").unwrap_or_default().lines()
+        .find(|l| l.starts_with(key)).and_then(|l| l.split_whitespace().nth(1))
+        .and_then(|v| v.parse::<f64>().ok()).unwrap_or(0.0) / 1024.0
+}
+
+pub fn probe_start(dirty: Res<DirtyFlags>, mut b: ResMut<BenchState>) {
+    if dirty.terrain && b.gen_start.is_none() { b.gen_start = Some(Instant::now()); }
+}
+pub fn probe_end(task: Res<GenerationTask>, hm: Res<CurrentHeightMap>, mut b: ResMut<BenchState>) {
+    if task.0.is_none() && hm.0.is_some() {
+        if let Some(t) = b.gen_start.take() {
+            println!("BENCH generation_latency_ms={:.1}", t.elapsed().as_secs_f64() * 1000.0);
+        }
+    }
+}
+pub fn frame_stats(time: Res<Time<Real>>, store: Res<DiagnosticsStore>, mut b: ResMut<BenchState>) {
+    b.frame_ms.push(time.delta_secs() * 1000.0);
+    let now = Instant::now();
+    let last = *b.last_report.get_or_insert(now);
+    if now.duration_since(last).as_secs_f32() >= 2.0 {
+        let mut v = std::mem::take(&mut b.frame_ms);
+        v.sort_by(|a, b| a.partial_cmp(b).unwrap());
+        let n = v.len().max(1);
+        let ents = store.get(&EntityCountDiagnosticsPlugin::ENTITY_COUNT).and_then(|d| d.value()).unwrap_or(0.0);
+        let mut gpu = String::new();
+        for d in store.iter() {
+            let p = d.path().as_str();
+            if p.starts_with("render/") && p.ends_with("elapsed_gpu") {
+                if let Some(x) = d.smoothed() { if x > 0.3 { gpu += &format!(" {}={:.2}", p.trim_start_matches("render/").trim_end_matches("/elapsed_gpu"), x); } }
+            }
+        }
+        println!("BENCH frames={} mean_ms={:.2} p50={:.2} p99={:.2} max={:.2} entities={} rss_mb={:.0} hwm_mb={:.0} gpu_ms[{} ]",
+            n, v.iter().sum::<f32>() / n as f32, v[n/2], v[(n*99/100).min(n-1)], v[n-1], ents, rss("VmRSS:"), rss("VmHWM:"), gpu);
+        b.last_report = Some(now);
+    }
+}
+pub struct BenchPlugin;
+impl Plugin for BenchPlugin {
+    fn build(&self, app: &mut App) {
+        app.init_resource::<BenchState>()
+            .add_plugins((FrameTimeDiagnosticsPlugin::default(), EntityCountDiagnosticsPlugin::default(),
+                          bevy::render::diagnostic::RenderDiagnosticsPlugin))
+            .add_systems(Update, (probe_start.before(crate::logic::generation::start_generation),
+                                  probe_end.after(crate::logic::generation::poll_generation),
+                                  frame_stats));
+    }
+}

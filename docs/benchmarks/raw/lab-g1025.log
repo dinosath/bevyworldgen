@@ -1,0 +1,13 @@
+symbios-tensor: tensor field blending toward axis-aligned fallback on near-flat terrain (slope=2.991e-4)
+BENCH frames=612 mean_ms=3.28 p50=2.93 p99=5.32 max=67.94 entities=410 rss_mb=345 hwm_mb=394 gpu_ms[ main_transparent_pass_3d=0.89 ]
+BENCH generation_latency_ms=3595.5
+BENCH frames=579 mean_ms=2.76 p50=2.69 p99=3.71 max=3.95 entities=410 rss_mb=766 hwm_mb=1092 gpu_ms[ main_transparent_pass_3d=0.89 ]
+BENCH frames=87 mean_ms=90.80 p50=14.07 p99=5937.08 max=5937.08 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.68 main_transparent_pass_3d=1.16 ]
+BENCH frames=142 mean_ms=14.15 p50=13.96 p99=16.82 max=17.08 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.65 main_transparent_pass_3d=1.17 ]
+BENCH frames=141 mean_ms=14.21 p50=14.01 p99=16.96 max=17.12 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.56 main_transparent_pass_3d=1.16 ]
+BENCH frames=142 mean_ms=14.10 p50=13.89 p99=16.58 max=16.70 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.63 main_transparent_pass_3d=1.15 ]
+BENCH frames=142 mean_ms=14.10 p50=13.87 p99=16.87 max=17.16 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.71 main_transparent_pass_3d=1.15 ]
+BENCH frames=142 mean_ms=14.14 p50=13.90 p99=16.59 max=17.02 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.62 main_transparent_pass_3d=1.14 ]
+BENCH frames=142 mean_ms=14.17 p50=13.99 p99=16.70 max=16.87 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.62 main_transparent_pass_3d=1.16 ]
+BENCH frames=142 mean_ms=14.11 p50=13.92 p99=16.28 max=17.19 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.66 main_transparent_pass_3d=1.15 ]
+BENCH frames=142 mean_ms=14.14 p50=13.93 p99=16.85 max=16.89 entities=5694 rss_mb=1221 hwm_mb=1221 gpu_ms[ main_opaque_pass_3d=10.66 main_transparent_pass_3d=1.14 ]

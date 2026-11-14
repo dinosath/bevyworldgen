@@ -1,0 +1,145 @@
+# host: Linux 7.2.15-ogc1.1.fc45.x86_64 x86_64 cpu=AMD Ryzen 7 5700G with Radeon Graphics threads=16 load=0.70 0.88 3.82
+# date: 2026-11-13T23:58:39+02:00
+# rustc: rustc 1.99.1 (58cf8f9c3 2026-10-13)
+$ generators 257
+fbm_ms=3.73 fp=0cb0ed1c73b59de5
+diamond_square_ms=0.70
+voronoi_ms=2.74
+peak_rss_mb=3.7
+$ generators 513
+fbm_ms=14.12 fp=f1d3afb80e124d18
+diamond_square_ms=2.72
+voronoi_ms=10.88
+peak_rss_mb=5.9
+$ generators 1025
+fbm_ms=55.49 fp=bf873f4da92f3f22
+diamond_square_ms=10.95
+voronoi_ms=42.80
+peak_rss_mb=15.1
+$ generators 2049
+fbm_ms=218.95 fp=736b93a046b15bdc
+diamond_square_ms=44.20
+voronoi_ms=172.81
+peak_rss_mb=50.9
+$ erosion 513 50000 1
+hydraulic_ms=136.11 drops=50000 cells=263169 lakes=12776
+thermal_ms=5.49 iters=1
+changed=true
+peak_rss_mb=4.9
+$ erosion 513 50000 1
+hydraulic_ms=133.71 drops=50000 cells=263169 lakes=12776
+thermal_ms=5.42 iters=1
+changed=true
+peak_rss_mb=5.0
+$ erosion 513 50000 1
+hydraulic_ms=135.27 drops=50000 cells=263169 lakes=12776
+thermal_ms=5.39 iters=1
+changed=true
+peak_rss_mb=4.9
+$ erosion 1025 50000 1
+hydraulic_ms=148.92 drops=50000 cells=1050625 lakes=5141
+thermal_ms=18.18 iters=1
+changed=true
+peak_rss_mb=11.2
+$ erosion 1025 200000 1
+hydraulic_ms=585.16 drops=200000 cells=1050625 lakes=28617
+thermal_ms=21.47 iters=1
+changed=true
+peak_rss_mb=11.2
+$ erosion 2049 50000 1
+hydraulic_ms=172.78 drops=50000 cells=4198401 lakes=1527
+thermal_ms=57.38 iters=1
+changed=true
+peak_rss_mb=34.7
+$ erosion 2049 800000 1
+hydraulic_ms=2762.49 drops=800000 cells=4198401 lakes=50305
+thermal_ms=76.67 iters=1
+changed=true
+peak_rss_mb=35.4
+$ erosion 513 50000 100
+hydraulic_ms=134.41 drops=50000 cells=263169 lakes=12776
+thermal_ms=286.82 iters=100
+changed=true
+peak_rss_mb=5.1
+$ roads 513
+generate_roads_ms=7.03 nodes=8925 edges=10123
+rationalize_ms=64.28
+extract_blocks_ms=1.22 blocks=298
+extract_lots_ms=1.09 lots=40
+prune_ms=6.97 edges_after=24298
+carve_roads_ms=3.37
+carve_lots_ms=1.49
+road_meshes_ms=0.23
+peak_rss_mb=8.6
+$ roads 1025
+symbios-tensor: tensor field blending toward axis-aligned fallback on near-flat terrain (slope=2.991e-4)
+generate_roads_ms=37.25 nodes=40840 edges=46894
+rationalize_ms=1794.44
+extract_blocks_ms=7.06 blocks=1990
+extract_lots_ms=5.61 lots=221
+prune_ms=221.32 edges_after=113478
+carve_roads_ms=16.33
+carve_lots_ms=7.35
+road_meshes_ms=1.97
+peak_rss_mb=27.5
+$ roads 2049
+symbios-tensor: tensor field blending toward axis-aligned fallback on near-flat terrain (slope=8.924e-4)
+generate_roads_ms=161.35 nodes=181359 edges=209121
+rationalize_ms=37856.14
+extract_blocks_ms=42.67 blocks=11943
+extract_lots_ms=24.37 lots=953
+prune_ms=6258.58 edges_after=496082
+carve_roads_ms=73.90
+carve_lots_ms=39.08
+road_meshes_ms=11.53
+peak_rss_mb=102.8
+$ roads 513
+generate_roads_ms=7.31 nodes=8925 edges=10123
+rationalize_ms=80.22
+extract_blocks_ms=1.28 blocks=298
+extract_lots_ms=1.09 lots=40
+prune_ms=6.89 edges_after=24298
+carve_roads_ms=3.47
+carve_lots_ms=1.57
+road_meshes_ms=0.22
+peak_rss_mb=9.0
+$ roads 513
+generate_roads_ms=7.04 nodes=8925 edges=10123
+rationalize_ms=62.94
+extract_blocks_ms=1.21 blocks=298
+extract_lots_ms=1.06 lots=40
+prune_ms=6.87 edges_after=24298
+carve_roads_ms=3.34
+carve_lots_ms=1.50
+road_meshes_ms=0.21
+peak_rss_mb=8.5
+$ buildings 1000
+grammar_parse_ms=0.17 rules=41
+derive_total_ms=106.62 buildings=1000 terminals=381685 mean_ms=0.098 p50_ms=0.092 p99_ms=0.259
+peak_rss_mb=4.0
+$ buildings 10000
+grammar_parse_ms=0.16 rules=41
+derive_total_ms=1014.59 buildings=10000 terminals=3852020 mean_ms=0.094 p50_ms=0.093 p99_ms=0.168
+peak_rss_mb=4.0
+$ tiles 128
+tiles_25_ms=20.87 loaded=25
+seam_mean=0.17688 seam_max=0.31323 interior_adjacent_mean=0.00300 seam_to_interior_ratio=58.9
+order_independent=true
+peak_rss_mb=5.4
+$ tiles 256
+tiles_25_ms=83.89 loaded=25
+seam_mean=0.17664 seam_max=0.31286 interior_adjacent_mean=0.00151 seam_to_interior_ratio=117.2
+order_independent=true
+peak_rss_mb=11.7
+$ determinism
+fbm_repeat_equal=true fbm_parallel_equal=true erosion_repeat_equal=true fp_fbm=f1d3afb80e124d18 fp_eroded=d7a4e15faae7bddc
+peak_rss_mb=15.0
+$ parallel-erosion 513 50000 1
+parallel_jobs=1 size=513 drops=50000 wall_ms=155.04
+peak_rss_mb=5.3
+$ parallel-erosion 513 50000 16
+parallel_jobs=16 size=513 drops=50000 wall_ms=208.67
+peak_rss_mb=35.6
+$ parallel-erosion 513 50000 32
+parallel_jobs=32 size=513 drops=50000 wall_ms=433.96
+peak_rss_mb=35.3

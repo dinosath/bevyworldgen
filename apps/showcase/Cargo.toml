@@ -1,0 +1,20 @@
+[package]
+name = "showcase"
+description = "Streamed procedural world demo and benchmark harness."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+bevy.workspace = true
+bevy_worldgen = { path = "../../crates/bevy_worldgen" }
+bevy_worldgen_render = { path = "../../crates/bevy_worldgen_render" }
+worldgen-core = { path = "../../crates/worldgen-core" }
+worldgen-terrain = { path = "../../crates/worldgen-terrain" }
+worldgen-world = { path = "../../crates/worldgen-world" }
+worldgen-roads = { path = "../../crates/worldgen-roads" }
+worldgen-geo = { path = "../../crates/worldgen-geo" }

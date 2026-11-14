@@ -1,0 +1,11 @@
+--- /var/home/dinosath/Projects/symbios-ground-lab/Cargo.toml	2026-11-13 23:36:51.120654349 +0200
++++ Cargo.toml	2026-11-14 00:03:35.230571717 +0200
+@@ -5,7 +5,7 @@
+ 
+ [dependencies]
+ # jpeg: the Poly Haven glTF props and kits reference JPEG textures.
+-bevy = { version = "0.20", features = ["jpeg"] }
++bevy = { version = "0.20", default-features = false, features = ["std","default_app","3d_bevy_render","scene","picking","bevy_winit","bevy_clipboard","default_font","multi_threaded","x11","wayland","ui_api","ui_bevy_render","jpeg","png","tonemapping_luts","sysinfo_plugin"] }
+ bevy_egui = "0.43.1"
+ bevy_panorbit_camera = { version = "0.36", features = ["bevy_egui"] }
+ symbios-ground = "0.4"

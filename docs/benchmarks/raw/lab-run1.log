@@ -1,0 +1,20 @@
+[2m2026-11-13T22:05:52.713942Z[0m [32m INFO[0m [2mbevy_diagnostic::system_information_diagnostics_plugin::internal[0m[2m:[0m SystemInfo { os: "Linux (Bazzite 45)", kernel: "7.2.15-ogc1.1.fc45.x86_64", cpu: "AMD Ryzen 7 5700G with Radeon Graphics", core_count: "8", memory: "58.7 GiB" }
+[2m2026-11-13T22:05:52.763985Z[0m [32m INFO[0m [2mbevy_render::renderer[0m[2m:[0m AdapterInfo { name: "AMD Radeon Graphics (RADV RENOIR)", vendor: 4098, device: 5688, device_type: IntegratedGpu, device_pci_bus_id: "0000:03:00.0", driver: "radv", driver_info: "Mesa 26.2.6", backend: Vulkan, subgroup_min_size: 64, subgroup_max_size: 64, transient_saves_memory: Some(false), limit_bucket: None }
+[2m2026-11-13T22:05:52.799753Z[0m [32m INFO[0m [2mbevy_pbr::cluster[0m[2m:[0m GPU clustering is supported on this device.
+[2m2026-11-13T22:05:52.799794Z[0m [32m INFO[0m [2mbevy_render::batching::gpu_preprocessing[0m[2m:[0m GPU preprocessing is fully supported on this device.
+[2m2026-11-13T22:05:52.800198Z[0m [32m INFO[0m [2mbevy_egui::render[0m[2m:[0m Using bindless_mode_array_size 16 (Device maximum 8388606)
+[2m2026-11-13T22:05:52.800454Z[0m [32m INFO[0m [2mbevy_winit::system[0m[2m:[0m Creating new window Veilbound City Lab (67v0)
+BENCH generation_latency_ms=334.4
+BENCH frames=71 mean_ms=27.94 p50=2.99 p99=1560.22 max=1560.22 entities=979 rss_mb=637 hwm_mb=670 gpu_ms[ main_transparent_pass_3d=0.57 ]
+[2m2026-11-13T22:05:55.748233Z[0m [32m INFO[0m [2msymbios_ground_lab::kit::buildings[0m[2m:[0m assembled 51 buildings from the kits
+BENCH frames=176 mean_ms=11.60 p50=10.32 p99=74.42 max=225.09 entities=2831 rss_mb=823 hwm_mb=823 gpu_ms[ main_opaque_pass_3d=8.73 main_transparent_pass_3d=0.40 ]
+BENCH frames=186 mean_ms=10.78 p50=10.51 p99=13.31 max=13.39 entities=2831 rss_mb=823 hwm_mb=823 gpu_ms[ main_opaque_pass_3d=8.72 main_transparent_pass_3d=0.40 ]
+BENCH frames=185 mean_ms=10.81 p50=10.51 p99=13.82 max=13.83 entities=2831 rss_mb=823 hwm_mb=823 gpu_ms[ main_opaque_pass_3d=8.75 main_transparent_pass_3d=0.40 ]
+BENCH frames=185 mean_ms=10.82 p50=10.52 p99=13.45 max=13.61 entities=2831 rss_mb=823 hwm_mb=823 gpu_ms[ main_opaque_pass_3d=8.73 main_transparent_pass_3d=0.40 ]
+BENCH frames=186 mean_ms=10.79 p50=10.57 p99=13.18 max=13.36 entities=2831 rss_mb=823 hwm_mb=823 gpu_ms[ main_opaque_pass_3d=8.73 main_transparent_pass_3d=0.40 ]
+BENCH frames=184 mean_ms=10.88 p50=10.57 p99=13.30 max=16.18 entities=2831 rss_mb=823 hwm_mb=823 gpu_ms[ main_opaque_pass_3d=8.73 main_transparent_pass_3d=0.40 ]
+[2m2026-11-13T22:06:07.197399Z[0m [32m INFO[0m [2mbevy_render::view::window::screenshot[0m[2m:[0m Screenshot saved to .local/city_lab.png
+
+real	0m14.901s
+user	0m24.990s
+sys	0m3.654s

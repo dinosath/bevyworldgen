@@ -1,0 +1,17 @@
+[package]
+name = "wasm-golden"
+description = "Golden-hash probe: the same chunk fingerprints computed natively and inside wasm32 (spike S-6)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[lints]
+workspace = true
+
+[dependencies]
+worldgen-core = { path = "../../crates/worldgen-core" }
+worldgen-terrain = { path = "../../crates/worldgen-terrain" }

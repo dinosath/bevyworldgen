@@ -1,0 +1,16 @@
+[package]
+name = "phase1-algos"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
+
+# Pinned to the exact versions the Ground Lab Bevy-0.20 branch uses (Cargo.lock there).
+[lints]
+workspace = true
+
+[dependencies]
+symbios-ground = "=0.4.2"
+symbios-tensor = "=0.7.0"
+symbios-shape = "=0.5.0"
+rayon = "1"

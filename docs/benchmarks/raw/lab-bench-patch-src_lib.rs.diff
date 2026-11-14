@@ -1,0 +1,10 @@
+--- /var/home/dinosath/Projects/symbios-ground-lab/src/lib.rs	2026-11-13 23:36:51.120861499 +0200
++++ src/lib.rs	2026-11-14 00:00:44.232507196 +0200
+@@ -10,6 +10,7 @@
+ //!
+ //! Entry point: [`main`](../symbios_ground_lab/fn.main.html) in `src/main.rs`.
+ 
++pub mod bench;
+ pub mod core;
+ pub mod kit;
+ pub mod logic;

@@ -1,0 +1,21 @@
+[package]
+name = "bevy_worldgen"
+description = "Bevy integration (Layer B): chunk streaming, job scheduling, floating origin, terrain queries."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+bevy.workspace = true
+worldgen-core = { path = "../worldgen-core" }
+worldgen-terrain = { path = "../worldgen-terrain" }
+worldgen-jobs = { path = "../worldgen-jobs" }
+worldgen-world = { path = "../worldgen-world" }
+
+# Platform workaround: load libwayland at runtime so building needs no libwayland-dev headers.
+[target.'cfg(target_os = "linux")'.dependencies]
+wayland-sys = { version = "0.31", features = ["dlopen"] }

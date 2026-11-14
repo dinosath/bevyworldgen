@@ -1,0 +1,20 @@
+--- /var/home/dinosath/Projects/symbios-ground-lab/src/core/config.rs	2026-11-13 23:06:20.965013952 +0200
++++ src/core/config.rs	2026-11-14 00:06:28.320917920 +0200
+@@ -87,7 +87,7 @@
+ impl Default for TerrainConfig {
+     fn default() -> Self {
+         Self {
+-            grid_size: 512,
++            grid_size: std::env::var("BENCH_GRID").ok().and_then(|v| v.parse().ok()).unwrap_or(512),
+             cell_scale: 1.0,
+             height_scale: 40.0,
+             water_level: 0.2,
+@@ -106,7 +106,7 @@
+             voronoi_num_terraces: 8,
+ 
+             erosion_enabled: true,
+-            erosion_drops: 50_000,
++            erosion_drops: std::env::var("BENCH_DROPS").ok().and_then(|v| v.parse().ok()).unwrap_or(50_000),
+             inertia: 0.05,
+             erosion_rate: 0.3,
+             deposition_rate: 0.3,

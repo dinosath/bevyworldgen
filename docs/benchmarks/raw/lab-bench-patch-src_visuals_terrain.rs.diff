@@ -1,0 +1,26 @@
+--- /var/home/dinosath/Projects/symbios-ground-lab/src/visuals/terrain.rs	2026-11-13 23:06:20.965745439 +0200
++++ src/visuals/terrain.rs	2026-11-14 00:07:34.884605516 +0200
+@@ -154,10 +154,12 @@
+     // (one pixel per heightmap cell, full-terrain coverage) maps exactly once
+     // over the mesh.
+     let world_extent = (hm.width() - 1) as f32 * hm.scale();
++    let __t0 = std::time::Instant::now();
+     let mut mesh = HeightMapMeshBuilder::new()
+         .with_normal_method(NormalMethod::AreaWeighted)
+         .with_uv_tile_size(world_extent)
+         .build(hm);
++    println!("BENCH terrain_mesh_build_ms={:.1} verts={}", __t0.elapsed().as_secs_f64()*1000.0, mesh.count_vertices());
+ 
+     // Water volume
+     if let Ok(mut transform) = water_q.single_mut() {
+@@ -173,8 +175,10 @@
+     // viz: the splat material isn't updated mid-viz so correct tangents aren't
+     // needed until the final rebuild when viz.enabled is already false.
+     if !viz.enabled {
++        let __t1 = std::time::Instant::now();
+         mesh.generate_tangents()
+             .expect("terrain mesh tangent generation failed");
++        println!("BENCH terrain_tangents_ms={:.1}", __t1.elapsed().as_secs_f64()*1000.0);
+     }
+ 
+     // There is always exactly one TerrainMesh. iter_mut().next() lets us move

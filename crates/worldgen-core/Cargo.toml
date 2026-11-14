@@ -1,0 +1,13 @@
+[package]
+name = "worldgen-core"
+description = "Engine-independent core types for deterministic chunked world generation: ids, seed streams, versions, cancellation, budgets."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+serde.workspace = true

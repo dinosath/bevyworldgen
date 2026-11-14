@@ -1,0 +1,16 @@
+--- /var/home/dinosath/Projects/symbios-ground-lab/src/main.rs	2026-11-13 23:30:20.889098480 +0200
++++ src/main.rs	2026-11-14 00:00:44.232590633 +0200
+@@ -32,11 +32,13 @@
+                 .set(WindowPlugin {
+                     primary_window: Some(Window {
+                         title: "Veilbound City Lab".into(),
++                        present_mode: bevy::window::PresentMode::AutoNoVsync,
+                         ..default()
+                     }),
+                     ..default()
+                 }),
+             EguiPlugin::default(),
++            symbios_ground_lab::bench::BenchPlugin,
+             PanOrbitCameraPlugin,
+             SymbiosTexturePlugin::default(),
+             BevySymbiosShapePlugin,

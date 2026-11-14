@@ -1,0 +1,14 @@
+[package]
+name = "geo-import"
+description = "Fetch a real-world region (Terrarium DEM tiles + OSM roads/buildings) into a local directory."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+worldgen-geo = { path = "../../crates/worldgen-geo" }
+serde_json = "1"

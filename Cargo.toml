@@ -1,0 +1,57 @@
+[workspace]
+resolver = "3"
+members = [
+  "crates/worldgen-core",
+  "crates/worldgen-terrain",
+  "crates/worldgen-jobs",
+  "crates/worldgen-world",
+  "crates/worldgen-veg",
+  "crates/worldgen-roads",
+  "crates/worldgen-city",
+  "crates/worldgen-geo",
+  "crates/bevy_worldgen",
+  "crates/bevy_worldgen_render",
+  "bench/phase1-algos",
+  "apps/wasm-golden",
+  "apps/showcase",
+  "apps/geo-import",
+]
+
+[workspace.lints.clippy]
+# Pipeline entry points take many explicit inputs on purpose (no hidden global state) and geometry
+# code uses tuple/array tables; these lints are style, not correctness.
+too_many_arguments = "allow"
+type_complexity = "allow"
+needless_range_loop = "allow"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+rust-version = "1.97"
+repository = "local"
+publish = false
+
+[workspace.dependencies]
+bevy = { version = "0.20.1", default-features = false, features = [
+  "std", "default_app", "3d_bevy_render", "scene", "picking", "bevy_winit", "bevy_clipboard",
+  "default_font", "multi_threaded", "x11", "wayland", "ui_api", "ui_bevy_render", "png",
+  "tonemapping_luts", "free_camera", "bevy_log", "sysinfo_plugin",
+] }
+# Pinned exactly while upstream is 0.x (ADR-001 §1).
+symbios-ground = "=0.4.2"
+symbios-tensor = "=0.7.0"
+symbios-shape = "=0.5.0"
+symbios-texture = "=0.8.1"
+libm = "0.2"
+bevy_grass = "0.20.6"
+rayon = "1"
+serde = { version = "1", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 16
+
+[profile.dev.package."*"]
+opt-level = 2
