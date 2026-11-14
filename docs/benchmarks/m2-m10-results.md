@@ -68,7 +68,7 @@ on this GPU at High without further LOD/shadow work.
 
 ## 5. Things that were not measured or verified
 
-* `mate-h/bevy_terrain` runtime (S-1): never run (permission denied; not circumvented). The in-house renderer is **not** shown to be better.
+* `mate-h/bevy_terrain` (S-1): run after owner approval, see `s1-bevy-terrain.md` (24.5 ms p50 in its own example; not like-for-like). The in-house renderer is **not** shown to be faster or slower; it was kept for integration reasons.
 * Any discrete GPU; VRAM; GPU time per feature on Medium/Low.
 * Browser/WebGPU build and a Web-Worker job backend (only native-vs-wasm32 determinism of Layer A was checked, with node).
 * A human using the editor with a mouse (picking, brush feel); only the scripted session and unit tests ran.

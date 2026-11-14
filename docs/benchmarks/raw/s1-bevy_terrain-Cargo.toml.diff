@@ -1,0 +1,31 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index e6163b6..d2e576a 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -29,10 +29,15 @@ big_space = ["dep:big_space"]
+ rand = ["dep:rand"]
+ metal_capture = []
+ bluenoise_texture = ["bevy/bluenoise_texture"]
+-atmosphere_example = ["bevy/free_camera", "bevy/https", "bevy/tonemapping_luts"]
++atmosphere_example = ["bevy/free_camera", "bevy/tonemapping_luts"]
+ 
+ [dependencies]
+-bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", default-features = false, features = ["3d", "free_camera"] }
++bevy = { version = "0.20.1", default-features = false, features = [
++  "std", "default_app", "3d_bevy_render", "scene", "picking", "bevy_winit", "bevy_clipboard",
++  "default_font", "multi_threaded", "x11", "wayland", "ui_api", "ui_bevy_render", "png",
++  "tonemapping_luts", "free_camera", "bevy_log",
++] }
++wayland-sys = { version = "0.31", features = ["dlopen"] }
+ big_space = { git = "https://github.com/mate-h/big_space", branch = "bevy-main", features = ["i32"], optional = true }
+ tiff = "0.10"
+ bytemuck = { version = "1.14", features = ["derive"] }
+@@ -83,3 +88,8 @@ required-features = ["atmosphere_example"]
+ name = "precision_demo"
+ path = "examples/precision_demo.rs"
+ required-features = ["rand"]
++
++[[example]]
++name = "s1_flight"
++path = "examples/s1_flight.rs"
++required-features = ["atmosphere_example"]

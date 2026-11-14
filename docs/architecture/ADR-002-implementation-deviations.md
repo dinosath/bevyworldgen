@@ -1,6 +1,6 @@
 # ADR-002 — Where the implementation departs from ADR-001 / the roadmap
 
-Status: **informational record** (written at the end of M10). ADR-001's *decision* (new workspace reusing the Bevy-free Symbios
+Status: **informational record**, ADR-001 accepted by the owner on 2026-11-14 (written at the end of M10). ADR-001's *decision* (new workspace reusing the Bevy-free Symbios
 crates as Layer A, plus a new chunk/streaming/determinism layer) was followed. The items below are the places where a plan
 item was replaced, narrowed or not done, with the reason. Nothing here reopens ADR-001; the owner should still confirm it.
 
@@ -8,7 +8,7 @@ item was replaced, narrowed or not done, with the reason. Nothing here reopens A
 
 | Plan | What happened | Why / evidence |
 |---|---|---|
-| `mate-h/bevy_terrain` as terrain renderer (spike S-1) | **Not evaluated at runtime.** An in-house geomipmapped quadtree chunk renderer (`bevy_worldgen_render`) was built instead | The single build+run of a modified third-party example was denied by the permission layer and was *not* worked around, so S-1's comparison was never run. The in-house renderer is measured (below), but "it beats bevy_terrain" is **not** a claim this project can make |
+| `mate-h/bevy_terrain` as terrain renderer (spike S-1) | **Run after owner approval** (see `docs/benchmarks/s1-bevy-terrain.md`): builds and runs on stable Bevy 0.20.1 with a manifest patch; p50 24.5 / p99 30.3 / max 31.6 ms in its own heightfield example at 100 m/s. **Not a like-for-like comparison** with the in-house renderer (different effects and content). Decision: keep the in-house chunk renderer for integration reasons (on-demand deterministic chunks, in-place regeneration), not on a speed claim | The terrain-vs-atmosphere cost split in the upstream example was not isolated; streaming generated content and edits through `bevy_terrain` was not tried |
 | `big_space` for large worlds | **Not adopted.** `WorldOrigin` re-centres the render origin (threshold 2.5 km, shift snapped to 1024 m), all generation uses `f64` world metres | Pre-release dependency; the shift is ~150 lines, covered by tests, and keeps Layer B free of a load-bearing RC crate. Not measured against `big_space` |
 | `bevy_erosion_filter` for detail erosion | **Not adopted.** Chunk-correct erosion is in-house (S-3: order-independent fixed-point droplets on an immutable base field, `erosion.rs`) | S-3 *passed* (borders bitwise equal, request-order independent), so the fallback was unnecessary. Visual parity with sequential erosion was reviewed by eye on screenshots only |
 | `bevy_grass` | **Adopted** (0.20.6, one `GrassField` per LOD-0 chunk, rate-limited creation) | Works; cost is the largest single GPU item in High/Ultra |
@@ -29,8 +29,8 @@ keep correct.
 
 ## Decisions this leaves to the owner
 
-1. Confirm ADR-001 (never explicitly confirmed during implementation).
-2. Whether to spend effort on S-1 (run `bevy_terrain`) — needs permission for building/running a modified third-party example.
+1. ~~Confirm ADR-001~~ **Confirmed by the owner 2026-11-14.**
+2. ~~Whether to run S-1~~ **Done** 2026-11-14 with owner approval; see the row above.
 3. GPU hardware for a re-baseline: every GPU-bound gate miss below is on a ~2 TFLOP integrated GPU.
 4. Publishing policy for any imported OSM/DEM region (ODbL share-alike; see `license-inventory.md` §5).
-5. Push of the local `bevy-0.20-veilbound` branch of the Ground Lab fork (still local only; not touched).
+5. ~~Push of the Ground Lab branch~~ **Done 2026-11-14** (`dinosath/symbios-ground-lab`, `bevy-0.20-veilbound`).

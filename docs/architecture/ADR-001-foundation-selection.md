@@ -1,6 +1,6 @@
 # ADR-001 — Foundation selection
 
-* **Status:** Proposed (Phase 1 outcome, awaiting owner confirmation)
+* **Status:** **Accepted** — confirmed by the owner on 2026-11-14 after M0–M10 were implemented (departures recorded in ADR-002)
 * **Date:** 2026-11-14
 * **Deciders:** project owner; analysis by Claude (Phase 1)
 * **Supersedes:** none. **Evidence:** `docs/research/*`, `docs/benchmarks/baseline.md`.

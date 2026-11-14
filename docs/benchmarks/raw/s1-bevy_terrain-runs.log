@@ -1,0 +1,4 @@
+run1 (assets missing - INVALID, shader/texture not found): frames=5230 p50=11.45 p99=12.27 max=14.50
+run2 (valid): S1_SUMMARY frames=2395 p50=24.51 p99=30.27 max=31.56 over50ms=0 over100ms=0 distance_m=6003
+run3 (valid, with screenshot): S1_SUMMARY frames=2358 p50=24.89 p99=30.81 max=32.23 over50ms=0 over100ms=0 distance_m=6003
+commit 30ddc75 of mate-h/bevy_terrain, patched to crates.io bevy 0.20.1, --no-default-features (no big_space)

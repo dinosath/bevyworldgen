@@ -119,8 +119,8 @@ of M1 — they add research risk and none is needed to prove the data model.
 
 ## 6. Owner decisions needed
 
-1. Confirm ADR-001 (or reopen per §12 there).
-2. Push `bevy-0.20-veilbound` to the `dinosath` fork (preserves the port; not done).
+1. ~~Confirm ADR-001~~ **Done** — owner confirmed 2026-11-14.
+2. ~~Push `bevy-0.20-veilbound` to the `dinosath` fork~~ **Done** 2026-11-14 (`dinosath/symbios-ground-lab`, branch `bevy-0.20-veilbound`).
 3. Approve licensing posture (project `MIT OR Apache-2.0`; MPL-2.0 unmodified dependency allowed; `bevy_water` blocked until license files appear).
-4. Permit building/running third-party examples for spikes S-1/R-3 (one such build was blocked by the permission layer in Phase 1 and not circumvented).
+4. Permit building/running third-party examples for spikes S-1/R-3 — owner approved 2026-11-14; outcome recorded in `docs/benchmarks/s1-bevy-terrain.md` if it ran.
 5. Decide hardware for gate re-baselining (discrete GPU).
